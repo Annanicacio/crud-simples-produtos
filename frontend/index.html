@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD de Produtos</title>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1> CRUD de Produtos</h1>
+
+  <div id="mensagem"></div>
+
+  <section id="secao-form">
+    <h2 id="titulo-form"> Novo Produto</h2>
+    <input type="hidden" id="id-editando" />
+
+    <form id="form-produto">
+      <label>
+        Nome *
+        <input type="text" id="campo-nome" placeholder="Ex: Notebook Dell" required />
+      </label>
+
+      <label>
+        Tipo *
+        <input type="text" id="campo-tipo" placeholder="Ex: Eletrônico" required />
+      </label>
+
+      <label>
+        Status
+        <select id="campo-status">
+          <option value="disponivel">Disponível</option>
+          <option value="emprestado">Emprestado</option>
+          <option value="manutencao">Manutenção</option>
+        </select>
+      </label>
+
+      <label class="full">
+        Descrição
+        <textarea id="campo-descricao" placeholder="Detalhes adicionais (opcional)"></textarea>
+      </label>
+
+      <div class="btn-group full">
+        <button type="submit" class="btn-primary" id="btn-salvar">💾 Salvar</button>
+        <button type="button" class="btn-secondary" id="btn-cancelar" style="display:none" onclick="cancelarEdicao()">✖ Cancelar</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="secao-filtros">
+    <h2> Filtrar</h2>
+    <div id="filtros">
+      <label>
+        Nome
+        <input type="text" id="filtro-nome" placeholder="Buscar por nome..." />
+      </label>
+      <label>
+        Tipo
+        <input type="text" id="filtro-tipo" placeholder="Buscar por tipo..." />
+      </label>
+      <label>
+        Status
+        <select id="filtro-status">
+          <option value="">Todos</option>
+          <option value="disponivel">Disponível</option>
+          <option value="emprestado">Emprestado</option>
+          <option value="manutencao">Manutenção</option>
+        </select>
+      </label>
+      <button class="btn-primary" onclick="carregarProdutos()"> Buscar</button>
+      <button class="btn-secondary" onclick="limparFiltros()">🗑 Limpar</button>
+    </div>
+  </section>
+
+  <section id="secao-tabela">
+    <h2> Produtos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Status</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-tabela">
+        </tbody>
+    </table>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
